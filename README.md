@@ -12,3 +12,9 @@ Composer: `buriti/i-educar-biblioteca-package`
 ## Status
 
 Scaffold inicial (documentação + ServiceProvider). Implementação segue a ordem em `ORDEM-DESENVOLVIMENTO-LAGUNA.md`.
+
+## Onda 2
+
+```bash
+php packages/buriti/i-educar-biblioteca-package/tests/run.php
+```

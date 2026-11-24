@@ -2,6 +2,13 @@
 
 > Pacote: `buriti/i-educar-biblioteca-package` · TR **5.5** · Prioridade **P1**
 
+
+## Onda 2 (código inicial 2026-11-24)
+
+- [x] Services de domínio + testes
+- [x] docs/onda-2/
+- [ ] Migrations/UI completas
+
 ## Backlog Laguna
 
 - [ ] Checklist 5.5.x × legado
