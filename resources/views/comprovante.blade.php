@@ -1,7 +1,8 @@
 @extends('biblioteca::layout')
 @php
     $p = $emprestimo['payload'] ?? [];
-    $titulo = ($p['obra'] ?? $emprestimo['titulo'] ?? 'Obra').' · '.($p['leitor'] ?? '');
+    $r = $resumo ?? [];
+    $titulo = ($r['obra'] ?? $p['obra'] ?? $emprestimo['titulo'] ?? 'Obra').' · '.($r['leitor'] ?? $p['leitor'] ?? '');
 @endphp
 @section('titulo', 'Comprovante #'.($emprestimo['id'] ?? ''))
 @section('migalha', 'Comprovante')
@@ -11,32 +12,51 @@
     {{ $titulo }}
 @endsection
 @section('acoes-topo')
-    <button class="botao claro" type="button" onclick="window.print()"><i class="fa fa-print"></i> Imprimir</button>
+    <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/comprovante/exportar') }}" style="display:inline">
+        @csrf
+        <input type="hidden" name="via" value="ambas">
+        <button class="botao" type="submit"><i class="fa fa-file-pdf-o"></i> PDF institucional</button>
+    </form>
+    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/vias') }}"><i class="fa fa-files-o"></i> 2 vias</a>
+    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/etiqueta') }}"><i class="fa fa-tags"></i> Etiqueta</a>
     <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos') }}"><i class="fa fa-exchange"></i> Voltar</a>
 @endsection
 
 @section('conteudo')
-    <div class="bloco" id="comprovante-print">
-        <h2><i class="fa fa-book"></i> Biblioteca escolar — comprovante</h2>
-        <dl class="form-grid" style="margin-top:12px">
-            <div><strong>Protocolo</strong><br>#{{ $emprestimo['id'] ?? '—' }}</div>
-            <div><strong>Situação</strong><br>
-                @if(!empty($p['devolvido_em']))
-                    Devolvido em {{ $p['devolvido_em'] }}
-                @else
-                    Emprestado
-                @endif
-            </div>
-            <div class="col-wide"><strong>Obra</strong><br>{{ $p['obra'] ?? $emprestimo['titulo'] ?? '—' }}</div>
-            <div><strong>Leitor</strong><br>{{ $p['leitor'] ?? '—' }}</div>
-            <div><strong>Retirada</strong><br>{{ $p['emprestado_em'] ?? '—' }}</div>
-            <div><strong>Devolução prevista</strong><br>{{ $p['devolucao_prevista'] ?? '—' }}</div>
-            @if(!empty($p['devolvido_em']))
-                <div><strong>Devolvido em</strong><br>{{ $p['devolvido_em'] }}</div>
-            @endif
-        </dl>
-        <p style="margin-top:16px;color:var(--suave);font-size:.85rem">
-            Emitido em {{ now()->format('d/m/Y H:i') }} · guarde este comprovante.
-        </p>
+<section class="aviso-portal">
+    <p><strong>Exportação unificada.</strong> O PDF usa o mesmo layout institucional dos demais módulos (logos, cabeçalho, QR de validação e linhas de assinatura). Use <em>2 vias</em> para controle físico (biblioteca + leitor) e <em>Etiqueta</em> para colar no volume.</p>
+</section>
+
+<div class="bloco">
+    <h2><i class="fa fa-book"></i> Pré-visualização</h2>
+    <p class="lead-bloco">Protocolo #{{ $r['id'] ?? $emprestimo['id'] ?? '—' }} · {{ $r['status'] ?? '—' }}</p>
+    <dl class="form-grid" style="margin-top:12px">
+        <div><strong>Obra</strong><br>{{ $r['obra'] ?? '—' }}</div>
+        <div><strong>Leitor</strong><br>{{ $r['leitor'] ?? '—' }} <span class="texto-suave">({{ $r['leitor_tipo'] ?? 'Leitor' }})</span></div>
+        <div><strong>Retirada</strong><br>{{ $r['emprestado_em'] ?? '—' }}</div>
+        <div><strong>Devolução prevista</strong><br>{{ $r['devolucao_prevista'] ?? '—' }}</div>
+        <div><strong>Devolvido em</strong><br>{{ $r['devolvido_em'] ?? '—' }}</div>
+        <div><strong>Emitido em</strong><br>@dataAbs(now())</div>
+    </dl>
+
+    <h2 style="margin-top:18px"><i class="fa fa-pencil"></i> Assinaturas no PDF</h2>
+    <p class="texto-suave">No documento institucional entram linhas para o responsável da biblioteca e para quem retirou o material.</p>
+    <div class="acoes-linha" style="margin-top:10px">
+        <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/comprovante/exportar') }}">
+            @csrf
+            <input type="hidden" name="via" value="ambas">
+            <button class="botao" type="submit"><i class="fa fa-file-pdf-o"></i> PDF — 2 assinaturas</button>
+        </form>
+        <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/comprovante/exportar') }}">
+            @csrf
+            <input type="hidden" name="via" value="biblioteca">
+            <button class="botao claro" type="submit">Só via biblioteca</button>
+        </form>
+        <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/comprovante/exportar') }}">
+            @csrf
+            <input type="hidden" name="via" value="leitor">
+            <button class="botao claro" type="submit">Só via leitor</button>
+        </form>
     </div>
+</div>
 @endsection

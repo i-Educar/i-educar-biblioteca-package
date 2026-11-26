@@ -4,11 +4,11 @@ namespace iEducar\Packages\BuritiBiblioteca\Support;
 
 final class Identidade
 {
-    public const COR = '#1e4d7b';
+    public const COR = '#1a5f9e';
 
-    public const DESTAQUE = '#2f6fad';
+    public const DESTAQUE = '#2f6bff';
 
-    public const COR_CLARA = '#e8f1f8';
+    public const COR_CLARA = '#e8f1fb';
 
     public const ICONE = 'fa-book';
 

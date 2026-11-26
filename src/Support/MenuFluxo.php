@@ -31,7 +31,7 @@ final class MenuFluxo
             [
                 'nome' => 'Configuração',
                 'itens' => $filtrar([
-                    $item('config', 'Prazos e regras', '/biblioteca-escolar/config', 'fa-cog'),
+                    $item('config', 'Prazos e regras', '/configuracoes/modulos?modulo=biblioteca', 'fa-cog'),
                 ]),
             ],
         ], static fn (array $g): bool => $g['itens'] !== []));

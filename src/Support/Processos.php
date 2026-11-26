@@ -4,13 +4,14 @@ namespace iEducar\Packages\BuritiBiblioteca\Support;
 
 final class Processos
 {
-    public const int RAIZ = 881500;
+    /** Faixa própria — não reutilizar 881500–881502 (Exportação unificada). */
+    public const int RAIZ = 881510;
 
-    public const int PAINEL = 881501;
+    public const int PAINEL = 881511;
 
-    public const int ACERVO = 881502;
+    public const int ACERVO = 881512;
 
-    public const int EMPRESTIMOS = 881503;
+    public const int EMPRESTIMOS = 881513;
 
     /** @return array<int, string> */
     public static function titulos(): array
