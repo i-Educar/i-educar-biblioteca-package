@@ -9,10 +9,10 @@
     <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.$r['id'].'/comprovante/exportar') }}" style="display:inline">
         @csrf
         <input type="hidden" name="via" value="ambas">
-        <button class="botao" type="submit"><i class="fa fa-file-pdf-o"></i> PDF institucional</button>
+        <button class="botao icone" type="submit" title="PDF institucional" aria-label="PDF institucional"><i aria-hidden="true" class="fa fa-file-pdf-o"></i></button>
     </form>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.$r['id'].'/comprovante') }}"><i class="fa fa-arrow-left"></i> Comprovante</a>
-    <button class="botao claro" type="button" onclick="window.print()"><i class="fa fa-print"></i> Imprimir vias</button>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos/'.$r['id'].'/comprovante') }}" title="Comprovante" aria-label="Comprovante"><i aria-hidden="true" class="fa fa-arrow-left"></i></a>
+    <button class="botao claro icone" type="button" onclick="window.print()" title="Imprimir vias" aria-label="Imprimir vias"><i aria-hidden="true" class="fa fa-print"></i></button>
 @endsection
 
 @section('conteudo')

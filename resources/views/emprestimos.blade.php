@@ -17,18 +17,12 @@
         'tituloModal' => 'Download — Empréstimos',
     ])
     @if(!empty($obras))
-        <button type="button" class="botao primaria" data-buriti-modal="modal-emprestar">
-            <i class="fa fa-hand-o-right"></i> Emprestar
-        </button>
+        <button type="button" class="botao primaria icone" data-buriti-modal="modal-emprestar" title="Emprestar" aria-label="Emprestar"><i aria-hidden="true" class="fa fa-hand-o-right"></i></button>
     @else
-        <button type="button" class="botao buriti-acao-bloqueada" disabled title="Cadastre um título no acervo">
-            <i class="fa fa-lock"></i> Emprestar
-        </button>
+        <button type="button" class="botao buriti-acao-bloqueada icone" disabled title="Cadastre um título no acervo" aria-label="Emprestar"><i aria-hidden="true" class="fa fa-lock"></i></button>
     @endif
-    <button type="button" class="botao consulta" data-buriti-modal="modal-buscar-leitor">
-        <i class="fa fa-search"></i> Buscar leitor
-    </button>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/acervo') }}"><i class="fa fa-book"></i> Acervo</a>
+    <button type="button" class="botao consulta icone" data-buriti-modal="modal-buscar-leitor" title="Buscar leitor" aria-label="Buscar leitor"><i aria-hidden="true" class="fa fa-search"></i></button>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/acervo') }}" title="Acervo" aria-label="Acervo"><i aria-hidden="true" class="fa fa-book"></i></a>
 @endsection
 
 @section('foco')

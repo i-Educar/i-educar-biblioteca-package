@@ -15,11 +15,11 @@
     <form method="POST" action="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/comprovante/exportar') }}" style="display:inline">
         @csrf
         <input type="hidden" name="via" value="ambas">
-        <button class="botao" type="submit"><i class="fa fa-file-pdf-o"></i> PDF institucional</button>
+        <button class="botao icone" type="submit" title="PDF institucional" aria-label="PDF institucional"><i aria-hidden="true" class="fa fa-file-pdf-o"></i></button>
     </form>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/vias') }}"><i class="fa fa-files-o"></i> 2 vias</a>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/etiqueta') }}"><i class="fa fa-tags"></i> Etiqueta</a>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos') }}"><i class="fa fa-exchange"></i> Voltar</a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/vias') }}" title="2 vias" aria-label="2 vias"><i aria-hidden="true" class="fa fa-files-o"></i></a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos/'.($emprestimo['id'] ?? 0).'/etiqueta') }}" title="Etiqueta" aria-label="Etiqueta"><i aria-hidden="true" class="fa fa-tags"></i></a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos') }}" title="Voltar" aria-label="Voltar"><i aria-hidden="true" class="fa fa-exchange"></i></a>
 @endsection
 
 @section('conteudo')

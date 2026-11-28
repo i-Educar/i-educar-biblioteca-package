@@ -6,8 +6,8 @@
 @section('titulo-tela', 'Etiqueta do empréstimo #'.$r['id'])
 @section('lead', 'Imprima e cole no volume ou na ficha de controle. Serve de identificação rápida na devolução.')
 @section('acoes-topo')
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos/'.$r['id'].'/comprovante') }}"><i class="fa fa-arrow-left"></i> Comprovante</a>
-    <button class="botao" type="button" onclick="window.print()"><i class="fa fa-print"></i> Imprimir etiqueta</button>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos/'.$r['id'].'/comprovante') }}" title="Comprovante" aria-label="Comprovante"><i aria-hidden="true" class="fa fa-arrow-left"></i></a>
+    <button class="botao icone" type="button" onclick="window.print()" title="Imprimir etiqueta" aria-label="Imprimir etiqueta"><i aria-hidden="true" class="fa fa-print"></i></button>
 @endsection
 
 @section('conteudo')

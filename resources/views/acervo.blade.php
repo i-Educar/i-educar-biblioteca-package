@@ -13,9 +13,9 @@
 @endsection
 @section('acoes-topo')
     @if($editando)
-        <a class="botao claro" href="{{ url('/biblioteca-escolar/acervo') }}"><i class="fa fa-times"></i> Cancelar edição</a>
+        <a class="botao claro icone" href="{{ url('/biblioteca-escolar/acervo') }}" title="Cancelar edição" aria-label="Cancelar edição"><i aria-hidden="true" class="fa fa-times"></i></a>
     @endif
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/emprestimos') }}"><i class="fa fa-exchange"></i> Empréstimos</a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/emprestimos') }}" title="Empréstimos" aria-label="Empréstimos"><i aria-hidden="true" class="fa fa-exchange"></i></a>
 @endsection
 
 @section('conteudo')

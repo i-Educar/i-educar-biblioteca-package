@@ -7,8 +7,8 @@
     Empreste livros, registre devoluções e acompanhe quem está com atraso.
 @endsection
 @section('acoes-topo')
-    <a class="botao" href="{{ url('/biblioteca-escolar/emprestimos') }}"><i class="fa fa-exchange"></i> Emprestar</a>
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/acervo') }}"><i class="fa fa-plus"></i> Novo título</a>
+    <a class="botao icone" href="{{ url('/biblioteca-escolar/emprestimos') }}" title="Emprestar" aria-label="Emprestar"><i aria-hidden="true" class="fa fa-exchange"></i></a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/acervo') }}" title="Novo título" aria-label="Novo título"><i aria-hidden="true" class="fa fa-plus"></i></a>
 @endsection
 
 @section('conteudo')

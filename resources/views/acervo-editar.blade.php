@@ -11,7 +11,7 @@
     Ajuste dados do título. Disponíveis = exemplares − emprestados ({{ $emprestados ?? 0 }}).
 @endsection
 @section('acoes-topo')
-    <a class="botao claro" href="{{ url('/biblioteca-escolar/acervo') }}"><i class="fa fa-arrow-left"></i> Acervo</a>
+    <a class="botao claro icone" href="{{ url('/biblioteca-escolar/acervo') }}" title="Acervo" aria-label="Acervo"><i aria-hidden="true" class="fa fa-arrow-left"></i></a>
 @endsection
 
 @section('conteudo')
